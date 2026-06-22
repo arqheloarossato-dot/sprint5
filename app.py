@@ -1,21 +1,40 @@
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+car_data = pd.read_csv('vehicles_us.csv')
+st.header('Análise de Veículos Usados')
+hist_button = st.button('Criar histograma')
+if hist_button:
 
-st.title("Projeto veiculos")
+    st.write(
+        'Criando um histograma para a coluna odometer'
+    )
 
-st.write("Olá, Streamlit!")
+    fig = px.histogram(
+        car_data,
+        x='odometer'
+    )
 
-dados = pd.DataFrame({
-    "Mes": ["Jan", "Fev", "Mar"],
-    "Vendas": [100, 200, 150]
-})
-
-fig = px.bar(
-    dados,
-    x="Mes",
-    y="Vendas",
-    title="Vendas por Mês"
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
+scatter_button = st.button(
+    'Criar gráfico de dispersão'
 )
+if scatter_button:
 
-st.plotly_chart(fig)
+    st.write(
+        'Criando gráfico de dispersão'
+    )
+
+    fig = px.scatter(
+        car_data,
+        x='odometer',
+        y='price'
+    )
+
+    st.plotly_chart(
+        fig,
+        use_container_width=True
+    )
