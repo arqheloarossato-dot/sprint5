@@ -11,3 +11,6 @@ Python
 Pandas
 Plotly Express
 Streamlit
+
+Aplicação online
+ https://sprint5-22qm.onrender.com
